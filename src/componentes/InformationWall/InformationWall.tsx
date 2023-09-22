@@ -1,5 +1,5 @@
 import { Divider, List, ListItem,
-  ListItemIcon, ListItemText, Typography } from '@mui/material';
+  ListItemIcon, ListItemText } from '@mui/material';
 import WatchLaterOutlinedIcon from '@mui/icons-material/WatchLaterOutlined';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
