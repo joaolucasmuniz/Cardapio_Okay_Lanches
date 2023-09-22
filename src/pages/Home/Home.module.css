@@ -1,0 +1,77 @@
+.logoContainer{
+    margin: 0 auto;
+    width: 25%;
+    margin-top: 1.2rem;
+    margin-bottom: 1.2rem;
+}
+
+.logoContainer img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.homeContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: 0 auto;
+}
+
+.homeContent{
+    background-image: url('../../images/HomeCards/HomePage.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 10px;
+}
+
+.homeTitle{
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: white;
+    background-color: rgb(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-top: 0.5rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+
+.homeText{
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    text-align: center;
+    background-color: rgb(252, 249, 249, 0.8);
+    border-radius: 10px;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+
+
+@media screen and (min-width: 768px) {
+    .homeContainer{
+        width: 80%;
+    }
+    .homeContent{
+        padding: 5rem;
+    }
+
+    .homeTitle{
+        font-size: 2rem;
+    }
+
+    .homeText{
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .homeContainer{
+        width: 60%;
+    }
+}

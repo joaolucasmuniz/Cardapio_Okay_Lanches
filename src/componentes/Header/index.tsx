@@ -39,7 +39,7 @@ function Header() {
     <AppBar color="default" position="static">
       <Toolbar>
         <Hidden smDown>
-          <div>
+          <div className={ styles.logoContainer }>
             <img src={ logoIcon } alt="logo" width="50" />
           </div>
           <div style={ { flex: 1 } } />
@@ -54,7 +54,6 @@ function Header() {
               {item.id}
             </Button>
           ))}
-
         </Hidden>
 
         <Hidden smUp>
@@ -83,7 +82,6 @@ function Header() {
           </IconButton>
         </div>
         <Divider />
-
         <List
           sx={
           {
@@ -103,14 +101,11 @@ function Header() {
                 color="inherit"
               >
                 {item.id}
-
               </Button>
             </ListItem>
           ))}
         </List>
-
       </SwipeableDrawer>
-
     </AppBar>
   );
 }
