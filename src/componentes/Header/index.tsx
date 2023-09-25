@@ -1,16 +1,23 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ChevronLeftOutlined, MenuOutlined } from '@mui/icons-material';
 import { AppBar, Button, Divider, Hidden, IconButton,
   List, ListItem, SwipeableDrawer, Toolbar, Typography } from '@mui/material';
 
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import logoIcon from '../../images/logo.jpeg';
 import styles from './Header.module.css';
 
 function Header() {
   const [currentNav, setCurrentNav] = useState('Home');
   const [open, setOpen] = useState(false);
+  const { pathname } = useLocation();
   const navigate = useNavigate();
+
+  function getFirstWordFromPathname() {
+    const parts = pathname.split('/');
+    const firstWord = parts[1];
+    return firstWord;
+  }
 
   const navigation = [
     {
@@ -23,16 +30,27 @@ function Header() {
       id: 'Bebidas', path: '/bebidas',
     },
     {
-      id: 'Porcões', path: '/porcoes',
+      id: 'Porções', path: '/porcoes',
     },
     {
       id: 'Batata Recheada', path: '/batata-recheada',
     },
   ];
 
-  const handleNav = (path: string, id: string) => {
+  useEffect(
+    () => {
+      const firstWord = getFirstWordFromPathname();
+      navigation.forEach((item) => {
+        if (item.path.toLowerCase() === `/${firstWord}`) {
+          setCurrentNav(item.id);
+        }
+      });
+    },
+    [pathname],
+  );
+
+  const handleNav = (path: string) => {
     navigate(path);
-    setCurrentNav(id);
   };
 
   return (
@@ -48,7 +66,7 @@ function Header() {
               className={ `${styles.navButton} 
               ${currentNav === item.id ? styles.active : ''}` }
               key={ item.id }
-              onClick={ () => handleNav(item.path, item.id) }
+              onClick={ () => handleNav(item.path) }
               color="inherit"
             >
               {item.id}
@@ -95,7 +113,7 @@ function Header() {
                 className={ `${styles.navButton} 
                 ${currentNav === item.id ? styles.active : ''}` }
                 onClick={ () => {
-                  handleNav(item.path, item.id);
+                  handleNav(item.path);
                   setOpen(false);
                 } }
                 color="inherit"

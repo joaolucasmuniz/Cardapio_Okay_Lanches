@@ -10,6 +10,7 @@ type CardProps = {
 function HomeCard(Props: CardProps) {
   const { title, image, link } = Props;
   const navigate = useNavigate();
+
   return (
     <Card
       sx={ {
@@ -21,9 +22,12 @@ function HomeCard(Props: CardProps) {
       <CardActionArea>
         <CardMedia
           component="img"
-          height="140"
           image={ image }
-          alt="green iguana"
+          alt={ title }
+          sx={ {
+            height: { sm: '16rem', xs: '8rem' },
+            objectFit: 'cover',
+          } }
         />
         <CardContent
           sx={ {

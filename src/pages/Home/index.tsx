@@ -3,13 +3,15 @@ import HomeCard from '../../componentes/HomeCard.tsx';
 import InformationWall from '../../componentes/InformationWall/InformationWall';
 import styles from './Home.module.css';
 
-import icon from '../../images/HomeCards/HomePage.png';
+import Lanches from '../../images/HomeCards/HomePage.png';
+import Bebidas from '../../images/HomeCards/Bebidas.png';
+import Porcoes from '../../images/HomeCards/Porcoes.png';
 
 const CardData = [
-  { name: 'Lanches', image: icon, link: '/lanches' },
-  { name: 'Bebidas', image: icon, link: '/bebidas' },
-  { name: 'Porções', image: icon, link: '/porcoes' },
-  { name: 'Batata Recheada', image: icon, link: '/batata-recheada' },
+  { name: 'Lanches', image: Lanches, link: '/lanches' },
+  { name: 'Bebidas', image: Bebidas, link: '/bebidas' },
+  { name: 'Porções', image: Porcoes, link: '/porcoes' },
+  { name: 'Batata Recheada', image: Lanches, link: '/batata-recheada' },
 ];
 
 function Home() {
