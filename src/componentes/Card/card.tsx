@@ -46,12 +46,12 @@ function CardOptions({
         sx={ {
           display: 'flex',
           justifyContent: 'end',
-          alignItems: 'center',
+          alignItems: 'end',
           padding: '1rem',
         } }
       >
         <Typography variant="body1" color="text.secondary">
-          {`R$: ${price.toFixed(2).replace('.', ',')}`}
+          {`R$ ${price.toFixed(2).replace('.', ',')}`}
         </Typography>
       </CardActions>
     </Card>
