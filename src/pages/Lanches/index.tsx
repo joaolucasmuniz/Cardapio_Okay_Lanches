@@ -11,11 +11,49 @@ function Lanches() {
   return (
     <div className={ styles.mainContainer }>
 
+      <nav className={ styles.navTags }>
+        <a href="#hamburguer">
+          <button
+            className={ styles.tagButton }
+            type="button"
+          >
+            Pão de Hamburguer
+          </button>
+        </a>
+
+        <a href="#frances">
+          <button
+            className={ styles.tagButton }
+            type="button"
+          >
+            Pão Francês
+          </button>
+        </a>
+
+        <a href="#hotDogs">
+          <button
+            className={ styles.tagButton }
+            type="button"
+          >
+            Hot Dogs
+          </button>
+        </a>
+
+        <a href="#lanchesNoPrato">
+          <button
+            className={ styles.tagButton }
+            type="button"
+          >
+            Lanches no Prato
+          </button>
+        </a>
+      </nav>
+
       <section className={ styles.section }>
         <div
           className={ styles.titleContainer }
         >
-          <h2 className={ styles.titles }>
+          <h2 id="hamburguer" className={ styles.titles }>
             Pão de Hamburguer
           </h2>
         </div>
@@ -44,7 +82,7 @@ function Lanches() {
         <div
           className={ styles.titleContainer }
         >
-          <h2 className={ styles.titles }>
+          <h2 id="frances" className={ styles.titles }>
             Pão Francês
           </h2>
         </div>
@@ -73,7 +111,7 @@ function Lanches() {
         <div
           className={ styles.titleContainer }
         >
-          <h2 className={ styles.titles }>
+          <h2 id="hotDogs" className={ styles.titles }>
             Hot Dogs
           </h2>
         </div>
@@ -102,7 +140,7 @@ function Lanches() {
         <div
           className={ styles.titleContainer }
         >
-          <h2 className={ styles.titles }>
+          <h2 id="lanchesNoPrato" className={ styles.titles }>
             Lanches no Prato
           </h2>
         </div>

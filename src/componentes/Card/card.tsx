@@ -3,6 +3,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 
 type CardProps = {
   id: number;
@@ -15,46 +16,52 @@ type CardProps = {
 function CardOptions({
   id, name, ingredients = '', price, image = '' }: CardProps) {
   return (
-    <Card
-      key={ id }
-      sx={ {
-        maxWidth: 345,
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
-      } }
+    <Link
+      to={ `/detalhes/${id}` }
+      style={ { textDecoration: 'none' } }
     >
-      {image && (
-        <CardMedia
-          sx={ { height: 140 } }
-          image={ image }
-          title={ name }
-        />
-      )}
-
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {name}
-        </Typography>
-        {ingredients && (
-          <Typography variant="body2" color="text.secondary">
-            {ingredients}
-          </Typography>
-        )}
-      </CardContent>
-      <CardActions
+      <Card
+        key={ id }
         sx={ {
+          maxWidth: 345,
           display: 'flex',
-          justifyContent: 'end',
-          alignItems: 'end',
-          padding: '1rem',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          height: '100%',
         } }
       >
-        <Typography variant="body1" color="text.secondary">
-          {`R$ ${price.toFixed(2).replace('.', ',')}`}
-        </Typography>
-      </CardActions>
-    </Card>
+        {image && (
+          <CardMedia
+            sx={ { height: 140 } }
+            image={ image }
+            title={ name }
+          />
+        )}
+
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="div">
+            {name}
+          </Typography>
+          {ingredients && (
+            <Typography variant="body2" color="text.secondary">
+              {ingredients}
+            </Typography>
+          )}
+        </CardContent>
+        <CardActions
+          sx={ {
+            display: 'flex',
+            justifyContent: 'end',
+            alignItems: 'end',
+            padding: '1rem',
+          } }
+        >
+          <Typography variant="body1" color="text.secondary">
+            {`R$ ${price.toFixed(2).replace('.', ',')}`}
+          </Typography>
+        </CardActions>
+      </Card>
+    </Link>
   );
 }
 
