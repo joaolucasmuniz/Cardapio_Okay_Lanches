@@ -16,7 +16,6 @@ function Header() {
   function getFirstWordFromPathname() {
     const parts = pathname.split('/');
     const firstWord = parts[1];
-    console.log(firstWord);
     return firstWord;
   }
 
@@ -35,6 +34,10 @@ function Header() {
     },
     {
       id: 'Batata Recheada', path: '/batata-recheada',
+    },
+
+    {
+      id: 'Pedidos', path: '/pedidos',
     },
 
   ];

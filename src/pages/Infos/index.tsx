@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import All from '../../Data/All/All';
-import { Pedido } from '../../types/types';
+import { ObjetoPedido, Pedido } from '../../types/types';
 import simpleOrderLinkGenerator from '../../helpers/simpleOrderLinkGenerator';
 import ContextStore from '../../context/context';
 
@@ -14,7 +14,7 @@ function Detalhes() {
     () => {
       const storedPedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
       if (!storedPedidos) return;
-      setPedido({ pedidos: storedPedidos, observacoes: pedido.observacoes });
+      setPedido(storedPedidos);
     },
     [],
   );
@@ -33,7 +33,7 @@ function Detalhes() {
       setQuantidade((prevState) => prevState - 1);
     }
   };
-
+  console.log(pedido);
   const handleClickComprar = () => {
     const novoPedido = {
       name,
@@ -54,11 +54,12 @@ function Detalhes() {
       image,
     };
 
-    // Atualize o array de pedidos com o novo pedido ou modifique o pedido existente
-    let updatedPedidos: Pedido[] = [];
+    // Verifique se o novo pedido já existe na lista de pedidos
     const pedidoExistente = pedido.pedidos.find((item) => item.id === Number(id));
 
-    // Se o pedido existir, atualize a quantidade
+    // Atualize a lista de pedidos com o novo pedido ou modifique o pedido existente
+    let updatedPedidos: Pedido[] = [];
+
     if (pedidoExistente) {
       updatedPedidos = pedido.pedidos.map((item) => {
         if (item.id === Number(id)) {
@@ -69,13 +70,18 @@ function Detalhes() {
     } else {
       updatedPedidos = [...pedido.pedidos, novoPedido];
     }
-    // Atualize o localStorage com os pedidos atualizados
-    localStorage.setItem('pedidos', JSON.stringify(
-      { pedidos: updatedPedidos, observacoes: pedido.observacoes },
-    ));
 
-    // Atualize o estado de pedido com os pedidos atualizados
-    setPedido({ pedidos: updatedPedidos, observacoes: pedido.observacoes });
+    // Atualize o objeto ObjetoPedido com a lista de pedidos atualizada
+    const pedidoAtualizado: ObjetoPedido = {
+      pedidos: updatedPedidos,
+      observacoes: pedido.observacoes,
+    };
+
+    // Atualize o localStorage com o pedidoAtualizado
+    localStorage.setItem('pedidos', JSON.stringify(pedidoAtualizado));
+
+    // Atualize o estado global pedido com o pedidoAtualizado
+    setPedido(pedidoAtualizado);
   };
 
   return (

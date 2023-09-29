@@ -13,8 +13,6 @@ function CarrinhoDePedidos() {
     [],
   );
 
-  console.log(pedido);
-
   return (
     <div>
       <h1>Carrinho de Pedidos</h1>
