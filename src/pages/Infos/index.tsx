@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import All from '../../Data/All/All';
 import { ObjetoPedido, Pedido } from '../../types/types';
@@ -9,11 +9,15 @@ function Detalhes() {
   const { id } = useParams<{ id: string }>();
   const { pedido, setPedido } = useContext(ContextStore);
   const [quantidade, setQuantidade] = useState(1);
+  const navigate = useNavigate();
 
   useEffect(
     () => {
-      const storedPedidos = JSON.parse(localStorage.getItem('pedidos') || '[]');
-      if (!storedPedidos) return;
+      const storedPedidos = JSON.parse(localStorage.getItem('pedidos') as string);
+      if (!storedPedidos) {
+        localStorage.setItem('pedidos', JSON.stringify({ pedidos: [], observacoes: '' }));
+        return;
+      }
       setPedido(storedPedidos);
     },
     [],
@@ -36,9 +40,16 @@ function Detalhes() {
   console.log(pedido);
   const handleClickComprar = () => {
     const novoPedido = {
-      name,
-      quantidade,
-      price,
+      pedidos: [
+        {
+          id: Number(id),
+          name,
+          price,
+          quantidade,
+          image,
+        },
+      ],
+      observacoes: '',
     };
 
     simpleOrderLinkGenerator(novoPedido);
@@ -82,6 +93,8 @@ function Detalhes() {
 
     // Atualize o estado global pedido com o pedidoAtualizado
     setPedido(pedidoAtualizado);
+
+    window.alert('Pedido adicionado ao carrinho!');
   };
 
   return (
@@ -119,6 +132,12 @@ function Detalhes() {
         onClick={ handleClickAdicionarAoPedido }
       >
         adicionar ao pedido
+      </button>
+
+      <button
+        onClick={ () => navigate('/pedidos') }
+      >
+        ir para o carrinho de pedidos
       </button>
     </div>
   );
