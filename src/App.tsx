@@ -11,7 +11,7 @@ import ScrollToTop from './helpers/scrollUp';
 import ContextStore from './context/context';
 import { ObjetoPedido } from './types/types';
 import Detalhes from './pages/Infos';
-import CarrinhoDePedidos from './pages/CarrinhoDePedidos/CarrinhoDePedidos';
+import CarrinhoDePedidos from './pages/CarrinhoDePedidos';
 
 function App() {
   const [pedido, setPedido] = useState<ObjetoPedido>({ pedidos: [], observacoes: '' });

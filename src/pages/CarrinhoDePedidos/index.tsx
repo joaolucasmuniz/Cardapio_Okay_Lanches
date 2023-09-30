@@ -1,4 +1,5 @@
 import { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ContextStore from '../../context/context';
 import CartCardsContainer from '../../componentes/CartCard';
 import './carrinho.css';
@@ -6,6 +7,7 @@ import simpleOrderLinkGenerator from '../../helpers/simpleOrderLinkGenerator';
 
 function CarrinhoDePedidos() {
   const { pedido, setPedido } = useContext(ContextStore);
+  const navigate = useNavigate();
 
   useEffect(
     () => {
@@ -30,6 +32,23 @@ function CarrinhoDePedidos() {
     setPedido({ pedidos: pedido.pedidos, observacoes: value });
   };
 
+  if (pedido.pedidos.length === 0) {
+    return (
+      <div>
+        <h1>Carrinho de Pedidos</h1>
+        <p data-testid="shopping-cart-empty-message">
+          Seu carrinho está vazio
+        </p>
+        <button
+          type="button"
+          onClick={ () => navigate('/') }
+        >
+          voltar para o pagina inicial
+        </button>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h1>Carrinho de Pedidos</h1>
@@ -46,6 +65,10 @@ function CarrinhoDePedidos() {
         />
         <label htmlFor="text_observacoes">Comments</label>
       </div>
+      <p>
+        total:
+        {pedido.pedidos.reduce((acc, curr) => acc + curr.price * curr.quantidade, 0)}
+      </p>
 
       <button
         type="button"
@@ -53,6 +76,7 @@ function CarrinhoDePedidos() {
       >
         Enviar Pedido
       </button>
+
     </div>
   );
 }

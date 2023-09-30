@@ -5,6 +5,8 @@ import { ObjetoPedido, Pedido } from '../../types/types';
 import simpleOrderLinkGenerator from '../../helpers/simpleOrderLinkGenerator';
 import ContextStore from '../../context/context';
 
+import styles from './infos.module.css';
+
 function Detalhes() {
   const { id } = useParams<{ id: string }>();
   const { pedido, setPedido } = useContext(ContextStore);
@@ -98,48 +100,62 @@ function Detalhes() {
   };
 
   return (
-    <div>
-      <h1>Detalhes</h1>
-      <p>{id}</p>
-      <p>{name}</p>
-      <p>{ingredients}</p>
-      <p>{price}</p>
-      <p>{image}</p>
-      <p>
-        quantidade:
-        {quantidade}
-      </p>
+    <main className={ styles.mainContainer }>
+      <section className={ styles.container }>
 
-      <button
-        style={ { marginLeft: '1rem' } }
-        onClick={ () => handleQuantidade('adicionar') }
-      >
-        +
-      </button>
-      <button
-        onClick={ () => handleQuantidade('remover') }
-      >
-        -
-      </button>
+        <h1 className={ styles.titles }>{name}</h1>
 
-      <button
-        onClick={ handleClickComprar }
-      >
-        comprar
-      </button>
+        <p className={ styles.ingredients }>{ingredients}</p>
 
-      <button
-        onClick={ handleClickAdicionarAoPedido }
-      >
-        adicionar ao pedido
-      </button>
+        <section className={ styles.quantidadeContainer }>
+          <p>Quantidade:</p>
+          <section className={ styles.quantidadeAction }>
 
-      <button
-        onClick={ () => navigate('/pedidos') }
-      >
-        ir para o carrinho de pedidos
-      </button>
-    </div>
+            <button
+              className={ styles.buttonQuantidade }
+              onClick={ () => handleQuantidade('remover') }
+            >
+              -
+            </button>
+
+            <p className={ styles.quantidade }>{quantidade}</p>
+
+            <button
+              className={ styles.buttonQuantidade }
+              onClick={ () => handleQuantidade('adicionar') }
+            >
+              +
+            </button>
+
+          </section>
+        </section>
+
+        <button
+          className={ styles.actionButtons }
+          onClick={ handleClickAdicionarAoPedido }
+        >
+          {`Adicionar ao pedido 
+          ( R$ ${Number(price * quantidade).toFixed(2).replace('.', ',')} )`}
+        </button>
+
+        <section className={ styles.actionButtonsContainer }>
+          <button
+            className={ styles.actionButtons }
+            onClick={ handleClickComprar }
+          >
+            Pedir agora
+          </button>
+
+          <button
+            className={ styles.actionButtons }
+            onClick={ () => navigate('/pedidos') }
+          >
+            Ir para os pedidos
+          </button>
+        </section>
+
+      </section>
+    </main>
   );
 }
 
