@@ -1,6 +1,8 @@
 import { useContext } from 'react';
 import ContextStore from '../../context/context';
 
+import styles from './cartcard.module.css';
+
 function CartCardsContainer() {
   const { pedido, setPedido } = useContext(ContextStore);
 
@@ -42,30 +44,46 @@ function CartCardsContainer() {
   return (
     <>
       {pedido.pedidos.map((item, index) => (
-        <div key={ item.id + index }>
-          <p>{item.name}</p>
-          <p>{item.quantidade}</p>
-          <p>{item.price}</p>
-          <p>{item.image}</p>
+        <section
+          className={ styles.card }
+          key={ item.id + index }
+        >
+          <h4 className={ styles.title }>{item.name}</h4>
 
-          <button
-            onClick={ () => handleClickRemover(item) }
-          >
-            remover
-          </button>
+          <div className={ styles.action }>
+            <button
+              className={ styles.buttonRemover }
+              onClick={ () => handleClickRemover(item) }
+            >
+              Remover
+            </button>
 
-          <button
-            onClick={ () => hadleclickAdicionar(item) }
-          >
-            +
-          </button>
+            <section className={ styles.quantidadeAction }>
 
-          <button
-            onClick={ () => handleClickSubtrair(item) }
-          >
-            -
-          </button>
-        </div>
+              <button
+                className={ styles.buttonQuantidade }
+                onClick={ () => hadleclickAdicionar(item) }
+              >
+                +
+              </button>
+              <p className={ styles.quantidade }>{`${item.quantidade} Un.`}</p>
+              <button
+                className={ styles.buttonQuantidade }
+                onClick={ () => handleClickSubtrair(item) }
+              >
+                -
+              </button>
+            </section>
+          </div>
+
+          <div className={ styles.price }>
+            <p>
+              {`R$ ${Number(item.price * item.quantidade)
+                .toFixed(2).replace('.', ',')}`}
+            </p>
+          </div>
+
+        </section>
       ))}
     </>
   );

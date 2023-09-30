@@ -1,0 +1,57 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+    margin: 2rem 1rem;
+    padding: 0rem 1rem;
+}
+
+.title{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 1rem 0rem;
+}
+
+.action{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.buttonRemover {
+    background-color: rgb(248, 74, 74);
+    color: white;
+    border-radius: 10px;
+    border: none;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    margin: 0.5rem;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.quantidadeAction{
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  width: fit-content;
+}
+
+
+.buttonQuantidade{
+  background-color: rgb(230, 101, 55);
+  color: white;
+  border-radius: 10px;
+  border: 1px solid rgb(238, 76, 17, 0.5);
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.price{
+    text-align: end;
+}
