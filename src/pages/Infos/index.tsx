@@ -10,14 +10,15 @@ import styles from './infos.module.css';
 function Detalhes() {
   const { id } = useParams<{ id: string }>();
   const { pedido, setPedido } = useContext(ContextStore);
-  const [quantidade, setQuantidade] = useState(1);
+  const [quantity, setQuantity] = useState(1);
+  const [notes, setNotes] = useState('');
   const navigate = useNavigate();
 
   useEffect(
     () => {
       const storedPedidos = JSON.parse(localStorage.getItem('pedidos') as string);
       if (!storedPedidos) {
-        localStorage.setItem('pedidos', JSON.stringify({ pedidos: [], observacoes: '' }));
+        localStorage.setItem('pedidos', JSON.stringify({ pedidos: [] }));
         return;
       }
       setPedido(storedPedidos);
@@ -34,12 +35,12 @@ function Detalhes() {
 
   const handleQuantidade = (adicionarOuRemover: string) => {
     if (adicionarOuRemover === 'adicionar') {
-      setQuantidade((prevState) => prevState + 1);
-    } else if (adicionarOuRemover === 'remover' && quantidade > 1) {
-      setQuantidade((prevState) => prevState - 1);
+      setQuantity((prevState) => prevState + 1);
+    } else if (adicionarOuRemover === 'remover' && quantity > 1) {
+      setQuantity((prevState) => prevState - 1);
     }
   };
-  console.log(pedido);
+
   const handleClickComprar = () => {
     const novoPedido = {
       pedidos: [
@@ -47,11 +48,11 @@ function Detalhes() {
           id: Number(id),
           name,
           price,
-          quantidade,
+          quantity,
           image,
+          notes,
         },
       ],
-      observacoes: '',
     };
 
     simpleOrderLinkGenerator(novoPedido);
@@ -61,33 +62,22 @@ function Detalhes() {
     // Crie um novo pedido com base nos dados do produto e na quantidade
     const novoPedido: Pedido = {
       id: Number(id),
+      id_pedido: Date.now(),
       name,
       price,
-      quantidade,
+      quantity,
       image,
+      notes,
     };
-
-    // Verifique se o novo pedido já existe na lista de pedidos
-    const pedidoExistente = pedido.pedidos.find((item) => item.id === Number(id));
 
     // Atualize a lista de pedidos com o novo pedido ou modifique o pedido existente
     let updatedPedidos: Pedido[] = [];
 
-    if (pedidoExistente) {
-      updatedPedidos = pedido.pedidos.map((item) => {
-        if (item.id === Number(id)) {
-          return { ...item, quantidade: item.quantidade + quantidade };
-        }
-        return item;
-      });
-    } else {
-      updatedPedidos = [...pedido.pedidos, novoPedido];
-    }
+    updatedPedidos = [...pedido.pedidos, novoPedido];
 
     // Atualize o objeto ObjetoPedido com a lista de pedidos atualizada
     const pedidoAtualizado: ObjetoPedido = {
       pedidos: updatedPedidos,
-      observacoes: pedido.observacoes,
     };
 
     // Atualize o localStorage com o pedidoAtualizado
@@ -97,6 +87,11 @@ function Detalhes() {
     setPedido(pedidoAtualizado);
 
     window.alert('Pedido adicionado ao carrinho!');
+  };
+
+  const handleChangeNotes = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const { value } = event.target;
+    setNotes(value);
   };
 
   return (
@@ -118,7 +113,7 @@ function Detalhes() {
               -
             </button>
 
-            <p className={ styles.quantidade }>{quantidade}</p>
+            <p className={ styles.quantidade }>{quantity}</p>
 
             <button
               className={ styles.buttonQuantidade }
@@ -130,12 +125,25 @@ function Detalhes() {
           </section>
         </section>
 
+        <section className={ styles.textareaContainer }>
+          <label htmlFor="noteInput">Observações:</label>
+          <textarea
+            className={ styles.notesInput }
+            id="noteInput"
+            placeholder="Ex: Tirar a cebola"
+            value={ notes }
+            onChange={ (e) => handleChangeNotes(e) }
+          />
+
+        </section>
+
         <button
-          className={ styles.actionButtons }
+          className={ styles.buttonAddToOrder }
           onClick={ handleClickAdicionarAoPedido }
         >
-          {`Adicionar ao pedido 
-          ( R$ ${Number(price * quantidade).toFixed(2).replace('.', ',')} )`}
+          {`ADICIONAR AO PEDIDO
+          (${Number(price * quantity)
+            .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })})`}
         </button>
 
         <section className={ styles.actionButtonsContainer }>

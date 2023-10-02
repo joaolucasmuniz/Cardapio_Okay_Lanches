@@ -24,12 +24,7 @@ function CarrinhoDePedidos() {
   const handleClickSendOrder = () => {
     simpleOrderLinkGenerator(pedido);
     localStorage.removeItem('pedidos');
-    setPedido({ pedidos: [], observacoes: '' });
-  };
-
-  const handleChanges = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const { value } = event.target;
-    setPedido({ pedidos: pedido.pedidos, observacoes: value });
+    setPedido({ pedidos: [] });
   };
 
   if (pedido.pedidos.length === 0) {
@@ -53,21 +48,10 @@ function CarrinhoDePedidos() {
     <div>
       <h1>Carrinho de Pedidos</h1>
       <CartCardsContainer />
-      <h3>
-        observacoes:
-      </h3>
-      <div className="">
-        <textarea
-          onChange={ handleChanges }
-          value={ pedido.observacoes }
-          name="text_observacoes"
-          id="text_observacoes"
-        />
-        <label htmlFor="text_observacoes">Comments</label>
-      </div>
       <p>
-        total:
-        {pedido.pedidos.reduce((acc, curr) => acc + curr.price * curr.quantidade, 0)}
+        {`Total: ${pedido.pedidos
+          .reduce((acc, curr) => acc + curr.price * curr.quantity, 0)
+          .toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`}
       </p>
 
       <button

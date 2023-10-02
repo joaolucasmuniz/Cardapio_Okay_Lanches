@@ -14,7 +14,7 @@ import Detalhes from './pages/Infos';
 import CarrinhoDePedidos from './pages/CarrinhoDePedidos';
 
 function App() {
-  const [pedido, setPedido] = useState<ObjetoPedido>({ pedidos: [], observacoes: '' });
+  const [pedido, setPedido] = useState<ObjetoPedido>({ pedidos: [] });
   return (
     <ContextStore.Provider
       value={ {

@@ -8,45 +8,45 @@ function CartCardsContainer() {
 
   const hadleclickAdicionar = (item: any) => {
     const updatedPedidos = pedido.pedidos.map((itemPedido) => {
-      if (itemPedido.id === item.id) {
-        return { ...itemPedido, quantidade: itemPedido.quantidade + 1 };
+      if (itemPedido.id_pedido === item.id_pedido) {
+        return { ...itemPedido, quantity: itemPedido.quantity + 1 };
       }
       return itemPedido;
     });
-    setPedido({ pedidos: updatedPedidos, observacoes: pedido.observacoes });
+    setPedido({ pedidos: updatedPedidos });
     localStorage.setItem('pedidos', JSON.stringify(
-      { pedidos: updatedPedidos, observacoes: pedido.observacoes },
+      { pedidos: updatedPedidos },
     ));
   };
 
   const handleClickSubtrair = (item: any) => {
     const updatedPedidos = pedido.pedidos.map((itemPedido) => {
-      if (itemPedido.id === item.id && itemPedido.quantidade > 1) {
-        return { ...itemPedido, quantidade: itemPedido.quantidade - 1 };
+      if (itemPedido.id_pedido === item.id_pedido && itemPedido.quantity > 1) {
+        return { ...itemPedido, quantity: itemPedido.quantity - 1 };
       }
       return itemPedido;
     });
-    setPedido({ pedidos: updatedPedidos, observacoes: pedido.observacoes });
+    setPedido({ pedidos: updatedPedidos });
     localStorage.setItem('pedidos', JSON.stringify(
-      { pedidos: updatedPedidos, observacoes: pedido.observacoes },
+      { pedidos: updatedPedidos },
     ));
   };
 
   const handleClickRemover = (item: any) => {
     const updatedPedidos = pedido.pedidos
-      .filter((itemPedido) => itemPedido.id !== item.id);
-    setPedido({ pedidos: updatedPedidos, observacoes: pedido.observacoes });
+      .filter((itemPedido) => itemPedido.id_pedido !== item.id_pedido);
+    setPedido({ pedidos: updatedPedidos });
     localStorage.setItem('pedidos', JSON.stringify(
-      { pedidos: updatedPedidos, observacoes: pedido.observacoes },
+      { pedidos: updatedPedidos },
     ));
   };
 
   return (
     <>
-      {pedido.pedidos.map((item, index) => (
+      {pedido.pedidos.map((item) => (
         <section
           className={ styles.card }
-          key={ item.id + index }
+          key={ item.id_pedido }
         >
           <h4 className={ styles.title }>{item.name}</h4>
 
@@ -58,17 +58,17 @@ function CartCardsContainer() {
               Remover
             </button>
 
-            <section className={ styles.quantidadeAction }>
+            <section className={ styles.quantityAction }>
 
               <button
-                className={ styles.buttonQuantidade }
+                className={ styles.buttonQuantity }
                 onClick={ () => hadleclickAdicionar(item) }
               >
                 +
               </button>
-              <p className={ styles.quantidade }>{`${item.quantidade} Un.`}</p>
+              <p className={ styles.quantity }>{`${item.quantity} Un.`}</p>
               <button
-                className={ styles.buttonQuantidade }
+                className={ styles.buttonQuantity }
                 onClick={ () => handleClickSubtrair(item) }
               >
                 -
@@ -77,9 +77,12 @@ function CartCardsContainer() {
           </div>
 
           <div className={ styles.price }>
+            <p>{item.notes}</p>
             <p>
-              {`R$ ${Number(item.price * item.quantidade)
-                .toFixed(2).replace('.', ',')}`}
+              {`${Number(item.price * item.quantity).toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL',
+              })}`}
             </p>
           </div>
 
