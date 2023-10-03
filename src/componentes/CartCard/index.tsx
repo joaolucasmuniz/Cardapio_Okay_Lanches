@@ -62,22 +62,22 @@ function CartCardsContainer() {
 
               <button
                 className={ styles.buttonQuantity }
-                onClick={ () => hadleclickAdicionar(item) }
-              >
-                +
-              </button>
-              <p className={ styles.quantity }>{`${item.quantity} Un.`}</p>
-              <button
-                className={ styles.buttonQuantity }
                 onClick={ () => handleClickSubtrair(item) }
               >
                 -
               </button>
+              <p className={ styles.quantity }>{`${item.quantity} Un.`}</p>
+              <button
+                className={ styles.buttonQuantity }
+                onClick={ () => hadleclickAdicionar(item) }
+              >
+                +
+              </button>
             </section>
           </div>
 
-          <div className={ styles.price }>
-            <p>{item.notes}</p>
+          <div className={ styles.detailsContainer }>
+            <p className={ styles.notes }>{item.notes}</p>
             <p>
               {`${Number(item.price * item.quantity).toLocaleString('pt-BR', {
                 style: 'currency',

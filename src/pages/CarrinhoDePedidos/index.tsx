@@ -30,7 +30,6 @@ function CarrinhoDePedidos() {
   if (pedido.pedidos.length === 0) {
     return (
       <div>
-        <h1>Carrinho de Pedidos</h1>
         <p data-testid="shopping-cart-empty-message">
           Seu carrinho está vazio
         </p>
@@ -45,8 +44,7 @@ function CarrinhoDePedidos() {
   }
 
   return (
-    <div>
-      <h1>Carrinho de Pedidos</h1>
+    <main>
       <CartCardsContainer />
       <p>
         {`Total: ${pedido.pedidos
@@ -61,7 +59,7 @@ function CarrinhoDePedidos() {
         Enviar Pedido
       </button>
 
-    </div>
+    </main>
   );
 }
 

@@ -52,6 +52,15 @@
   cursor: pointer;
 }
 
-.price{
+.detailsContainer{
     text-align: end;
+}
+
+.notes{
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin: 1rem 0rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
