@@ -5,14 +5,13 @@ function simpleOrderLinkGenerator(pedido: ObjetoPedido, formInfo?:FormInfo) {
 
   const pedidoText = pedido.pedidos.map((item) => {
     return (`Nome: *${item.name}*
-      Quantidade: ${item.quantity}
+      Quantidade: ${item.quantity} Un
       Valor: ${(item.price * item.quantity).toLocaleString('pt-br', {
         style: 'currency',
         currency: 'BRL',
       })}\n
       ${item.notes.length > 0 ? `Observações: ${item.notes}\n` : ''}
       ----------------------------------`
-
     );
   }).join('\n');
 
