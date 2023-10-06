@@ -42,7 +42,7 @@ function CartCardsContainer() {
   };
 
   return (
-    <>
+    <section className={ styles.cardsContainer }>
       {pedido.pedidos.map((item) => (
         <section
           className={ styles.card }
@@ -88,7 +88,7 @@ function CartCardsContainer() {
 
         </section>
       ))}
-    </>
+    </section>
   );
 }
 

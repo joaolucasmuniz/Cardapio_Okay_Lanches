@@ -11,3 +11,8 @@ export type Pedido = {
 export type ObjetoPedido = {
   pedidos: Pedido[];
 };
+
+export type FormInfo = {
+  metodo_de_entrega?: string;
+  metodo_de_pagamento?: string;
+};
