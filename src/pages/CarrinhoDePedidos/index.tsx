@@ -6,6 +6,7 @@ import simpleOrderLinkGenerator from '../../helpers/simpleOrderLinkGenerator';
 import { FormInfo } from '../../types/types';
 
 import styles from './carrinho.module.css';
+import CartNotFound from '../../componentes/CartNotFound';
 
 function CarrinhoDePedidos() {
   const { pedido, setPedido } = useContext(ContextStore);
@@ -26,17 +27,7 @@ function CarrinhoDePedidos() {
 
   if (pedido.pedidos.length === 0) {
     return (
-      <div>
-        <p data-testid="shopping-cart-empty-message">
-          Seu carrinho está vazio
-        </p>
-        <button
-          type="button"
-          onClick={ () => navigate('/') }
-        >
-          voltar para o pagina inicial
-        </button>
-      </div>
+      <CartNotFound />
     );
   }
 
