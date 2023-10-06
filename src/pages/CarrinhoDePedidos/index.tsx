@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import ContextStore from '../../context/context';
 import CartCardsContainer from '../../componentes/CartCard';
 import simpleOrderLinkGenerator from '../../helpers/simpleOrderLinkGenerator';
@@ -10,7 +9,6 @@ import CartNotFound from '../../componentes/CartNotFound';
 
 function CarrinhoDePedidos() {
   const { pedido, setPedido } = useContext(ContextStore);
-  const navigate = useNavigate();
   const [formInfos, setFormInfos] = useState({});
 
   useEffect(

@@ -8,45 +8,28 @@ import CardOptions from '../../componentes/Card/card';
 import styles from './lanches.module.css';
 
 function Lanches() {
+  const navButtons = [
+    { name: 'Pão de Hamburguer', id: 'hamburguer' },
+    { name: 'Pão Francês', id: 'frances' },
+    { name: 'Hot Dogs', id: 'hotDogs' },
+    { name: 'Lanches no Prato', id: 'lanchesNoPrato' },
+  ];
   return (
     <div className={ styles.mainContainer }>
-
       <nav className={ styles.navTags }>
-        <a href="#hamburguer">
-          <button
-            className={ styles.tagButton }
-            type="button"
+        {navButtons.map((item, index) => (
+          <a
+            key={ index }
+            href={ `#${item.id}` }
           >
-            Pão de Hamburguer
-          </button>
-        </a>
-
-        <a href="#frances">
-          <button
-            className={ styles.tagButton }
-            type="button"
-          >
-            Pão Francês
-          </button>
-        </a>
-
-        <a href="#hotDogs">
-          <button
-            className={ styles.tagButton }
-            type="button"
-          >
-            Hot Dogs
-          </button>
-        </a>
-
-        <a href="#lanchesNoPrato">
-          <button
-            className={ styles.tagButton }
-            type="button"
-          >
-            Lanches no Prato
-          </button>
-        </a>
+            <button
+              className={ styles.tagButton }
+              type="button"
+            >
+              {item.name}
+            </button>
+          </a>
+        ))}
       </nav>
 
       <section className={ styles.section }>

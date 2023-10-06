@@ -1,98 +1,98 @@
 const PorcoesQuentesMedias = [
   {
     id: 30,
-    name: 'Batata Frita Canoa',
+    name: 'Porção de Batata Frita Canoa (Meia)',
     price: 24.00,
     image: 'https://static.itdg.com.br/images/auto-auto/bfb12454050a95d8a7899817ebff0e4f/hamburguer.jpg',
-    ingredients: '',
+    ingredients: 'Batata Frita Canoa',
   },
 
   {
     id: 31,
-    name: 'Batata Frita Canoa com Bacon e Cheddar',
+    name: 'Porção de Batata Frita Palito (Meia)',
     price: 30.00,
     image: 'https://static.itdg.com.br/images/auto-auto/bfb12454050a95d8a7899817ebff0e4f/hamburguer.jpg',
-    ingredients: '',
+    ingredients: 'Batata Frita Canoa com Bacon e Cheddar',
   },
 
   {
     id: 32,
-    name: 'Batata Frita',
+    name: 'Porção de Batata Frita (Meia)',
     price: 20.00,
     image: 'https://static.itdg.com.br/images/auto-auto/bfb12454050a95d8a7899817ebff0e4f/hamburguer.jpg',
-    ingredients: '',
+    ingredients: 'Batata Frita',
   },
 
   {
     id: 33,
-    name: 'Batata Frita com Bacon e Cheddar',
+    name: 'Porção de Batata Frita com Bacon e Cheddar (Meia)',
     price: 27.00,
     image: 'https://static.itdg.com.br/images/auto-auto/bfb12454050a95d8a7899817ebff0e4f/hamburguer.jpg',
-    ingredients: '',
+    ingredients: 'Batata Frita com Bacon e Cheddar',
   },
 
   {
     id: 36,
-    name: 'Polenta Frita',
+    name: 'Porção de Polenta Frita (Meia)',
     price: 20.00,
     image: 'https://static.itdg.com.br/images/auto-auto/bfb12454050a95d8a7899817ebff0e4f/hamburguer.jpg',
-    ingredients: '',
+    ingredients: 'Polenta Frita',
   },
 
   {
     id: 37,
-    name: 'Mandioca Frita',
+    name: 'Porção de Mandioca Frita (Meia)',
     price: 20.00,
     image: 'https://static.itdg.com.br/images/auto-auto/bfb12454050a95d8a7899817ebff0e4f/hamburguer.jpg',
-    ingredients: '',
+    ingredients: 'Mandioca Frita',
   },
 
   {
     id: 38,
-    name: 'Frango a Passarinho com Maionese de Alho',
+    name: 'Porção de Frango a Passarinho com Maionese de Alho (Meia)',
     price: 27.00,
     image: 'https://static.itdg.com.br/images/auto-auto/bfb12454050a95d8a7899817ebff0e4f/hamburguer.jpg',
-    ingredients: '',
+    ingredients: 'Frango a Passarinho com Maionese de Alho',
   },
 
   {
     id: 39,
-    name: 'Filé de Frango Acebolado na Chapa',
+    name: 'Porção de Filé de Frango Acebolado na Chapa (Meia)',
     price: 27.00,
     image: 'https://static.itdg.com.br/images/auto-auto/bfb12454050a95d8a7899817ebff0e4f/hamburguer.jpg',
-    ingredients: '',
+    ingredients: 'Filé de Frango Acebolado na Chapa',
   },
 
   {
     id: 40,
-    name: 'Isca de Frango a Milanesa ao Molho Rubia',
+    name: 'Porção de Isca de Frango a Milanesa ao Molho Rubia (Meia)',
     price: 27.00,
     image: 'https://static.itdg.com.br/images/auto-auto/bfb12454050a95d8a7899817ebff0e4f/hamburguer.jpg',
-    ingredients: '',
+    ingredients: 'Isca de Frango a Milanesa ao Molho Rubia',
   },
 
   {
     id: 41,
-    name: 'Contra Filé Acebolado na Chapa',
+    name: 'Porção de Contra Filé Acebolado na Chapa (Meia)',
     price: 44.00,
     image: 'https://static.itdg.com.br/images/auto-auto/bfb12454050a95d8a7899817ebff0e4f/hamburguer.jpg',
-    ingredients: '',
+    ingredients: 'Contra Filé Acebolado na Chapa',
   },
 
   {
     id: 42,
-    name: 'Calabresa Acebolada na Chapa',
+    name: 'Porção de Calabresa Acebolada na Chapa (Meia)',
     price: 26.00,
     image: 'https://static.itdg.com.br/images/auto-auto/bfb12454050a95d8a7899817ebff0e4f/hamburguer.jpg',
-    ingredients: '',
+    ingredients: 'Calabresa Acebolada na Chapa',
   },
 
   {
     id: 43,
-    name: 'Filé de Tilápia',
+    name: 'Porção de Filé de Tilápia (Meia)',
     price: 44.00,
     image: 'https://static.itdg.com.br/images/auto-auto/bfb12454050a95d8a7899817ebff0e4f/hamburguer.jpg',
-    ingredients: '',
+    ingredients: 'Filé de Tilápia',
   },
 ];
 

@@ -1,26 +1,26 @@
 const PorcoesFrias = [
   {
     id: 27,
-    name: 'Salame',
+    name: 'Porção de Salame',
     price: 73.00,
     image: 'https://static.itdg.com.br/images/auto-auto/bfb12454050a95d8a7899817ebff0e4f/hamburguer.jpg',
-    ingredients: '',
+    ingredients: 'Salame',
   },
 
   {
     id: 28,
-    name: 'Palmito com azeitona, Azeite e Orégano',
+    name: 'Porção de Palmito com azeitona, Azeite e Orégano',
     price: 73.00,
     image: 'https://static.itdg.com.br/images/auto-auto/bfb12454050a95d8a7899817ebff0e4f/hamburguer.jpg',
-    ingredients: '',
+    ingredients: 'Palmito com azeitona, Azeite e Orégano',
   },
 
   {
     id: 29,
-    name: 'Frios',
+    name: 'Porção de Frios',
     price: 74.00,
     image: 'https://static.itdg.com.br/images/auto-auto/bfb12454050a95d8a7899817ebff0e4f/hamburguer.jpg',
-    ingredients: '',
+    ingredients: 'Frios',
   },
 ];
 
